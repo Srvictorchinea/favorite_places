@@ -9,7 +9,6 @@ class PlacesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     if (places.isEmpty) {
       return Center(
         child: Text(
@@ -33,10 +32,18 @@ class PlacesList extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onBackground,
               ),
         ),
+        subtitle: Text(
+          places[index].location.address,
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
+        ),
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => PlaceDetailScreen(place: places[index]),
+              builder: (ctx) => PlaceDetailScreen(
+                place: places[index],
+              ),
             ),
           );
         },
