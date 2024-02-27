@@ -40,7 +40,7 @@ class _ImageInputState extends State<ImageInput> {
     Widget content = TextButton.icon(
       icon: const Icon(Icons.camera),
       label: const Text('Take Picture'),
-      onPressed: () {},
+      onPressed: _takePicture,
     );
 
     if (_selectedImage != null) {
