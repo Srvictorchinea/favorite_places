@@ -24,11 +24,11 @@ class _LocationInputState extends State<LocationInput> {
     }
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.latitude;
-    return 'url...?center$lat,$lng=&zoom=16&...A%7C$lat.$lng&key=Your key deleted signature';
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C$lat,$lng&markers=color:green%7Clabel:G%7C$lat,$lng&markers=color:red%7Clabel:C%7C$lat,$lng&key=AIzaSyCm4vyvp38Vx8VZfYjuFIsuovXXoayeRvw';
   }
 
   void _getCurrentLocation() async {
-    Location location = new Location();
+    Location location = Location();
 
     bool serviceEnabled;
     PermissionStatus permissionGranted;
@@ -57,10 +57,12 @@ class _LocationInputState extends State<LocationInput> {
     locationData = await location.getLocation();
     final lat = locationData.latitude;
     final lng = locationData.longitude;
+    
     if (lat == null || lng == null) {
       return;
     }
-    final url = Uri.parse('api_url.../json?latlng=$lat,$lng&key=Your api key');
+    // use this key AIzaSyCm4vyvp38Vx8VZfYjuFIsuovXXoayeRvw
+    final url = Uri.parse('https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=AIzaSyCm4vyvp38Vx8VZfYjuFIsuovXXoayeRvw');
     final response = await http.get(url);
     final resData = json.decode(response.body);
     final address = resData['results'][0]['formatted_address'];
@@ -97,7 +99,7 @@ class _LocationInputState extends State<LocationInput> {
     }
 
     if (_isGettinLocation) {
-      previewContent = CircularProgressIndicator();
+      previewContent = const CircularProgressIndicator();
     }
 
     return Column(

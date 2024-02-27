@@ -8,7 +8,7 @@ class PlaceDetailScreen extends StatelessWidget {
   String get locationImage {
     final lat = place.location.latitude;
     final lng = place.location.latitude;
-    return 'url...?center$lat,$lng=&zoom=16&...A%7C$lat.$lng&key=Your key deleted signature';
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C$lat,$lng&markers=color:green%7Clabel:G%7C$lat,$lng&markers=color:red%7Clabel:C%7C$lat,$lng&key=AIzaSyCm4vyvp38Vx8VZfYjuFIsuovXXoayeRvw';
   }
 
   @override
